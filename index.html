@@ -10,12 +10,13 @@
 </head>
 <body class="bg-background text-foreground p-8">
   <div class="max-w-2xl mx-auto space-y-6">
+
     <div>
       <h1 class="text-2xl font-bold">proto-base</h1>
       <p class="text-muted-foreground mt-1">AI駆動プロトタイピング ベース層</p>
     </div>
 
-    <div class="grid gap-4">
+    <div class="grid gap-3">
       <a href="prototypes/index.html" class="btn w-full justify-start">プロトタイプ一覧</a>
       <a href="templates/web/" class="btn-outline w-full justify-start">Web テンプレート</a>
       <a href="templates/mobile/" class="btn-outline w-full justify-start">モバイルテンプレート</a>
@@ -23,11 +24,11 @@
 
     <!-- Basecoat 動作確認 -->
     <div class="card">
-      <div class="card-header">
-        <h2 class="card-title">Basecoat 動作確認</h2>
-        <p class="card-description">各コンポーネントが正しく動作するか確認します</p>
-      </div>
-      <div class="card-content space-y-6">
+      <header>
+        <h2>Basecoat 動作確認</h2>
+        <p>各コンポーネントが正しく動作するか確認します</p>
+      </header>
+      <section class="space-y-6">
 
         <!-- Button -->
         <div class="space-y-2">
@@ -37,6 +38,7 @@
             <button class="btn-secondary">Secondary</button>
             <button class="btn-outline">Outline</button>
             <button class="btn-destructive">Destructive</button>
+            <button class="btn-ghost">Ghost</button>
           </div>
         </div>
 
@@ -51,12 +53,16 @@
           </div>
         </div>
 
-        <!-- Input -->
+        <!-- Input / Field -->
         <div class="space-y-2">
-          <p class="text-sm font-medium text-muted-foreground">Input</p>
-          <div class="field">
-            <label>メールアドレス</label>
-            <input type="email" placeholder="example@example.com">
+          <p class="text-sm font-medium text-muted-foreground">Input / Field</p>
+          <div role="group" class="field">
+            <label for="sample-input">メールアドレス</label>
+            <input id="sample-input" type="email" placeholder="example@example.com">
+          </div>
+          <div role="group" class="field">
+            <label for="sample-invalid">エラー状態</label>
+            <input id="sample-invalid" type="email" placeholder="example@example.com" aria-invalid="true">
           </div>
         </div>
 
@@ -66,15 +72,15 @@
           <button class="btn-outline" onclick="document.getElementById('test-dialog').showModal()">
             ダイアログを開く
           </button>
-          <dialog class="dialog" id="test-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
+          <dialog class="dialog" id="test-dialog">
             <div>
               <header>
-                <h2 id="dialog-title">確認</h2>
-                <p id="dialog-desc">Basecoat の Dialog が動作しています。</p>
+                <h2>確認</h2>
+                <p>Basecoat の Dialog が動作しています。</p>
               </header>
               <footer>
-                <button class="btn-outline" onclick="document.getElementById('test-dialog').close()">キャンセル</button>
-                <button class="btn" onclick="document.getElementById('test-dialog').close()">OK</button>
+                <button class="btn-outline" onclick="this.closest('dialog').close()">キャンセル</button>
+                <button class="btn" onclick="this.closest('dialog').close()">OK</button>
               </footer>
             </div>
           </dialog>
@@ -95,19 +101,20 @@
               <button role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">タブ 3</button>
             </nav>
             <div role="tabpanel" id="panel-1" aria-labelledby="tab-1" aria-selected="true" tabindex="-1">
-              タブ 1 のコンテンツ
+              <p class="p-4">タブ 1 のコンテンツ</p>
             </div>
             <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-selected="false" tabindex="-1" aria-hidden="true">
-              タブ 2 のコンテンツ
+              <p class="p-4">タブ 2 のコンテンツ</p>
             </div>
             <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" aria-selected="false" tabindex="-1" aria-hidden="true">
-              タブ 3 のコンテンツ
+              <p class="p-4">タブ 3 のコンテンツ</p>
             </div>
           </div>
         </div>
 
-      </div>
+      </section>
     </div>
+
   </div>
 </body>
 </html>
