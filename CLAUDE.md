@@ -16,7 +16,7 @@ Layer 1 の共有ベース層。すべてのクライアントプロジェクト
 ## テンプレート更新ルール
 
 - HTML + Tailwind CSS (Play CDN) + DaisyUI v4 (CDN) のみ使用。他のライブラリを追加しない
-- `data-theme="corporate"` 固定。CDN 読み込み順: DaisyUI CSS → Tailwind JS
+- `data-theme="corporate"` 固定。CDN 読み込み順: Google Fonts → DaisyUI CSS → Tailwind JS → tailwind.config script
 - 単一 `.html` ファイル完結（外部 JS・CSS ファイル不可）
 - ダミーデータは日本語（山田 太郎、yamada@example.com 等）
 - モーダルは `<dialog class="modal">` + `showModal()` のみ
