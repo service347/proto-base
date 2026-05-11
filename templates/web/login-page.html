@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン - [サービス名]</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-sm space-y-6">
+
+    <div class="text-center space-y-2">
+      <div class="flex justify-center">
+        <div class="bg-primary rounded-2xl w-14 h-14 flex items-center justify-center">
+          <span class="text-primary-content font-bold text-2xl">S</span>
+        </div>
+      </div>
+      <h1 class="text-2xl font-bold">[サービス名]</h1>
+      <p class="text-sm text-base-content/60">管理画面にログインしてください</p>
+    </div>
+
+    <div class="alert alert-error">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+      <span>メールアドレスまたはパスワードが正しくありません</span>
+    </div>
+
+    <div class="card bg-base-100 shadow-sm">
+      <div class="card-body space-y-4">
+        <label class="form-control w-full">
+          <div class="label"><span class="label-text font-medium">メールアドレス</span></div>
+          <input type="email" placeholder="example@example.com" class="input input-bordered w-full" value="yamada@example.com" />
+        </label>
+
+        <label class="form-control w-full">
+          <div class="label">
+            <span class="label-text font-medium">パスワード</span>
+            <a class="label-text-alt link link-primary">パスワードを忘れた方</a>
+          </div>
+          <input type="password" placeholder="パスワードを入力" class="input input-bordered w-full" />
+        </label>
+
+        <label class="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" checked />
+          <span class="text-sm">ログイン状態を保持する</span>
+        </label>
+
+        <button class="btn btn-primary w-full">ログインする</button>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-base-content/40">
+      &copy; 2026 [サービス名]. All rights reserved.
+    </p>
+  </div>
+</body>
+</html>

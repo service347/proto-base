@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フォーム - [サービス名]</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="drawer lg:drawer-open">
+  <input id="sidebar-toggle" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col min-h-screen bg-base-200">
+    <div class="navbar bg-base-100 border-b border-base-200 sticky top-0 z-10 shadow-sm">
+      <div class="flex-none lg:hidden">
+        <label for="sidebar-toggle" class="btn btn-square btn-ghost"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></label>
+      </div>
+      <div class="flex-1 px-2">
+        <div class="breadcrumbs text-sm"><ul><li><a>ホーム</a></li><li><a>[一覧名]</a></li><li>新規作成</li></ul></div>
+      </div>
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar placeholder"><div class="bg-primary text-primary-content rounded-full w-8"><span class="text-sm">山</span></div></label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"><li class="menu-title"><span>山田 太郎</span></li><li><a class="text-error">ログアウト</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <main class="flex-1 p-6 space-y-4 max-w-3xl">
+      <div>
+        <h1 class="text-xl font-bold">新規ユーザー登録</h1>
+        <p class="text-sm text-base-content/60 mt-0.5">必須項目をすべて入力してください</p>
+      </div>
+
+      <div class="alert alert-error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+        <span>入力内容に誤りがあります。各項目のエラーを確認してください。</span>
+      </div>
+
+      <div class="card bg-base-100 shadow-sm">
+        <div class="card-body space-y-4">
+          <h2 class="card-title text-base">基本情報</h2>
+          <div class="divider my-0"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label class="form-control w-full">
+              <div class="label"><span class="label-text font-medium">姓 <span class="text-error">*</span></span></div>
+              <input type="text" placeholder="山田" class="input input-bordered w-full" value="山田" />
+            </label>
+            <label class="form-control w-full">
+              <div class="label"><span class="label-text font-medium">名 <span class="text-error">*</span></span></div>
+              <input type="text" placeholder="太郎" class="input input-bordered w-full" value="太郎" />
+            </label>
+          </div>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">メールアドレス <span class="text-error">*</span></span></div>
+            <input type="email" placeholder="example@example.com" class="input input-bordered input-error w-full" value="yamada@" />
+            <div class="label"><span class="label-text-alt text-error">メールアドレスの形式が正しくありません</span></div>
+          </label>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">電話番号</span></div>
+            <input type="tel" placeholder="090-0000-0000" class="input input-bordered w-full" />
+            <div class="label"><span class="label-text-alt text-base-content/50">ハイフンあり・なしどちらでも入力できます</span></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-sm">
+        <div class="card-body space-y-4">
+          <h2 class="card-title text-base">アカウント設定</h2>
+          <div class="divider my-0"></div>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">権限 <span class="text-error">*</span></span></div>
+            <select class="select select-bordered w-full">
+              <option disabled selected>選択してください</option>
+              <option>管理者</option>
+              <option>編集者</option>
+              <option>閲覧者</option>
+            </select>
+          </label>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">パスワード <span class="text-error">*</span></span></div>
+            <input type="password" placeholder="8文字以上" class="input input-bordered w-full" />
+          </label>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">パスワード（確認） <span class="text-error">*</span></span></div>
+            <input type="password" placeholder="もう一度入力してください" class="input input-bordered w-full" />
+          </label>
+
+          <div class="space-y-3 pt-2">
+            <p class="text-sm font-medium">通知設定</p>
+            <div class="flex flex-col gap-2">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" checked />
+                <span class="text-sm">メール通知を受け取る</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" />
+                <span class="text-sm">週次レポートを受け取る</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-sm">
+        <div class="card-body space-y-4">
+          <h2 class="card-title text-base">プロフィール</h2>
+          <div class="divider my-0"></div>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">所属部署</span></div>
+            <div class="flex gap-4 flex-wrap">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="dept" class="radio radio-primary radio-sm" checked />
+                <span class="text-sm">営業部</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="dept" class="radio radio-primary radio-sm" />
+                <span class="text-sm">開発部</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="dept" class="radio radio-primary radio-sm" />
+                <span class="text-sm">管理部</span>
+              </label>
+            </div>
+          </label>
+
+          <label class="form-control w-full">
+            <div class="label"><span class="label-text font-medium">自己紹介</span></div>
+            <textarea class="textarea textarea-bordered w-full h-24" placeholder="自己紹介を入力してください（任意）"></textarea>
+            <div class="label"><span class="label-text-alt text-base-content/50">0 / 200文字</span></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 pb-6">
+        <button class="btn btn-outline">キャンセル</button>
+        <button class="btn btn-primary">保存する</button>
+      </div>
+    </main>
+  </div>
+  <div class="drawer-side z-20">
+    <label for="sidebar-toggle" class="drawer-overlay"></label>
+    <aside class="bg-base-100 border-r border-base-200 w-64 min-h-screen flex flex-col">
+      <div class="p-4 border-b border-base-200"><a class="flex items-center gap-2"><div class="bg-primary rounded-lg w-8 h-8 flex items-center justify-center"><span class="text-primary-content font-bold text-sm">S</span></div><span class="font-bold text-lg">[サービス名]</span></a></div>
+      <nav class="flex-1 p-3"><ul class="menu menu-md gap-1 w-full"><li class="menu-title"><span>メインメニュー</span></li><li><a><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>ダッシュボード</a></li><li><a class="active"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>ユーザー管理</a></li><li><a><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>レポート</a></li><li class="menu-title mt-2"><span>システム</span></li><li><a>設定</a></li></ul></nav>
+      <div class="p-4 border-t border-base-200 text-xs text-base-content/40">v1.0.0</div>
+    </aside>
+  </div>
+</div>
+</body>
+</html>
