@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proto-base</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.11/dist/basecoat.cdn.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.11/dist/js/all.min.js" defer></script>
+</head>
+<body class="bg-background text-foreground p-8">
+  <div class="max-w-2xl mx-auto space-y-6">
+    <div>
+      <h1 class="text-2xl font-bold">proto-base</h1>
+      <p class="text-muted-foreground mt-1">AI駆動プロトタイピング ベース層</p>
+    </div>
+
+    <div class="grid gap-4">
+      <a href="prototypes/index.html" class="btn btn-default w-full justify-start">
+        プロトタイプ一覧
+      </a>
+      <a href="templates/web/" class="btn btn-outline w-full justify-start">
+        Web テンプレート
+      </a>
+      <a href="templates/mobile/" class="btn btn-outline w-full justify-start">
+        モバイルテンプレート
+      </a>
+    </div>
+
+    <!-- Basecoat 動作確認 -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Basecoat 動作確認</h2>
+        <p class="card-description">各コンポーネントが正しく動作するか確認します</p>
+      </div>
+      <div class="card-content space-y-6">
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-muted-foreground">Button</p>
+          <div class="flex gap-2 flex-wrap">
+            <button class="btn btn-default">Default</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-destructive">Destructive</button>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-muted-foreground">Badge</p>
+          <div class="flex gap-2 flex-wrap">
+            <span class="badge badge-default">Default</span>
+            <span class="badge badge-secondary">Secondary</span>
+            <span class="badge badge-outline">Outline</span>
+            <span class="badge badge-destructive">Destructive</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-muted-foreground">Input</p>
+          <input type="text" class="input w-full" placeholder="テキストを入力...">
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-muted-foreground">Dialog</p>
+          <button class="btn btn-outline" data-dialog-trigger="test-dialog">ダイアログを開く</button>
+          <div data-dialog="test-dialog" class="dialog">
+            <div class="dialog-content">
+              <div class="dialog-header">
+                <h3 class="dialog-title">確認</h3>
+                <p class="dialog-description">Basecoat の Dialog が動作しています。</p>
+              </div>
+              <div class="dialog-footer">
+                <button class="btn btn-outline" data-dialog-close>キャンセル</button>
+                <button class="btn btn-default" data-dialog-close>OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-muted-foreground">Tabs</p>
+          <div data-tabs class="tabs">
+            <div class="tabs-list">
+              <button class="tabs-trigger" data-tabs-target="tab1">タブ 1</button>
+              <button class="tabs-trigger" data-tabs-target="tab2">タブ 2</button>
+              <button class="tabs-trigger" data-tabs-target="tab3">タブ 3</button>
+            </div>
+            <div id="tab1" class="tabs-content">タブ 1 のコンテンツ</div>
+            <div id="tab2" class="tabs-content">タブ 2 のコンテンツ</div>
+            <div id="tab3" class="tabs-content">タブ 3 のコンテンツ</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
