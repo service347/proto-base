@@ -1,96 +1,65 @@
+<!-- セットアップ手順（Claude には見えない）:
+  1. このファイルを proto-[client]/ に CLAUDE.md としてコピー
+  2. proto-base/guidelines/ux-best-practices.md を proto-[client]/guidelines/ にもコピー
+  3. guidelines/ubiquitous-language.md を作成（用語20〜30語 + ビジネスルール）
+  4. 案件情報セクションを埋める
+-->
+
 # プロトタイプ生成ガイド
 
-このファイルは Claude Code が自動で読み込む指示書です。
-`proto-base` の `CLAUDE.md.template` をコピーし、案件情報を埋めて `CLAUDE.md` にリネームして使ってください。
+## 案件情報
 
----
+<!-- ここを案件ごとに編集する -->
+サービス名: [記入]
+対象ユーザー: [記入]
+主な画面: [記入]
 
 ## スタック
 
-- HTML + Tailwind CSS (Play CDN) + DaisyUI v4 (CDN)
-- `data-theme="corporate"` をデフォルトとする（ブランドガイドラインがあれば上書き）
-- ビルド不要。単一の `.html` ファイルとして完結させること
-- 外部 CDN は Tailwind と DaisyUI のみ使用可。他のライブラリを追加しない
-
-CDN の読み込みは必ずこの順番で記述する：
+- HTML + Tailwind CSS (Play CDN) + DaisyUI v4 (CDN)、`data-theme="corporate"` 固定
+- ビルド不要。単一 `.html` ファイル完結。Tailwind / DaisyUI 以外のライブラリは追加しない
+- CDN はこの順番・このバージョンを変えない:
 
 ```html
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 ```
 
----
+## コンテキスト
 
-## 参照すべきファイル（必ず読むこと）
+プロトタイプ生成前に以下を読む:
 
-プロトタイプを生成する前に、以下のファイルをすべて読み込む。
+@guidelines/ux-best-practices.md
+@guidelines/ubiquitous-language.md
 
-- `guidelines/ux-best-practices.md` — UX ルール・フォーマット規則・状態表現
-- `guidelines/ubiquitous-language.md` — [案件] このプロジェクトの用語集
-- `guidelines/brand-guide.md` — [案件] ブランドカラー・トーン（あれば）
+## テンプレート
 
----
+新規ファイルは作らずテンプレートをコピーして編集する:
 
-## テンプレートの使い方
+| 画面 | テンプレート |
+|------|------------|
+| Web 管理画面ベース | `../proto-base/templates/web/admin-shell.html` |
+| Web 一覧 | `../proto-base/templates/web/list-page.html` |
+| Web 詳細 | `../proto-base/templates/web/detail-page.html` |
+| Web フォーム | `../proto-base/templates/web/form-page.html` |
+| Web ログイン | `../proto-base/templates/web/login-page.html` |
+| モバイル | `../proto-base/templates/mobile/ios-frame.html` |
 
-新規ファイルを作るのではなく、必ずテンプレートをコピーしてから編集する。
+## 生成ルール
 
-| 画面の種類 | 使うテンプレート |
-|----------|----------------|
-| Web 管理画面（空のベース） | `templates/web/admin-shell.html` |
-| Web 一覧画面 | `templates/web/list-page.html` |
-| Web 詳細画面 | `templates/web/detail-page.html` |
-| Web フォーム画面（新規作成・編集） | `templates/web/form-page.html` |
-| Web ログイン画面 | `templates/web/login-page.html` |
-| モバイル画面 | `templates/mobile/ios-frame.html` |
+- ダミーデータは `ubiquitous-language.md` の用語・固有名詞を使う（汎用ダミーは使わない）
+- モーダルは `<dialog class="modal">` + `showModal()` のみ使う（カスタム実装禁止）
+- タブは `role="tab"` + `type="radio"` の DaisyUI radio 方式のみ使う
+- サイドバーは `drawer lg:drawer-open` パターンのみ使う
+- 出力先: `prototypes/YYYY-MM-DD-[画面名].html`
 
----
+## 品質チェック（保存前に全確認）
 
-## 生成プロセス
-
-指示を受けたら以下の順番で作業する。
-
-1. **Web か モバイルか判定する**
-2. **上記「参照すべきファイル」をすべて読み込む**
-3. **最も近いテンプレートを選択してコピーする**
-4. **`ubiquitous-language.md` の用語でダミーデータを作る**（架空データでよい）
-5. **品質チェックを行う（下記参照）**
-6. **`prototypes/YYYY-MM-DD-[画面名].html` に保存する**
-
----
-
-## 品質チェック項目
-
-保存前に以下をすべて確認する。
-
-- [ ] DaisyUI / Tailwind 以外のライブラリを使っていないか
-- [ ] CDN の読み込み順が正しいか（DaisyUI CSS → Tailwind JS）
-- [ ] `data-theme="corporate"` が `<html>` に付いているか
-- [ ] `ubiquitous-language.md` の用語に沿ったラベル・テキストになっているか
-- [ ] モーダル・タブ等のインタラクションが DaisyUI の仕組みで動作するか
-- [ ] ローディング・空状態・エラー状態のいずれかが表現されているか
-- [ ] 破壊的操作（削除等）に確認ダイアログが付いているか
-- [ ] ボタンのラベルが動詞で始まっているか（「保存する」「削除する」）
-- [ ] 日付・金額のフォーマットが `ux-best-practices.md` の規則に沿っているか
-
----
-
-## 出力先
-
-```
-prototypes/YYYY-MM-DD-[画面名].html
-```
-
-例: `prototypes/2026-05-11-ユーザー一覧.html`
-
----
-
-## [案件情報] ← ここを案件ごとに編集する
-
-```
-サービス名: [記入]
-クライアント名: [記入]
-対象ユーザー: [記入]
-主な画面: [記入]
-備考: [記入]
-```
+- [ ] `<html data-theme="corporate">` が付いている
+- [ ] CDN 順: DaisyUI CSS → Tailwind JS
+- [ ] DaisyUI / Tailwind 以外のライブラリを使っていない
+- [ ] ラベル・テキストが `ubiquitous-language.md` の用語と完全に一致している
+- [ ] ボタンのラベルが動詞で始まる（「保存する」「削除する」）
+- [ ] 日付: 「YYYY年M月D日」、金額: 「¥1,234」形式
+- [ ] ローディング・空状態・エラー状態のいずれかを含む
+- [ ] 破壊的操作に `<dialog class="modal">` の確認ステップがある
